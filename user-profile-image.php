@@ -1,222 +1,102 @@
 <?php
 
-// // echo $_GET['id'];
-// session_start();
-
-// if (isset($_SESSION["user_id"])) {
-//     $mysqli = require __DIR__ . "../includes/database.php";
-
-//     $sql = "SELECT * FROM users WHERE id = ?";
-
-//     $stmt = $mysqli->prepare($sql);
-
-
-//     $stmt->bind_param("i", $_SESSION["user_id"]);
-//     $stmt->execute();
-
-//     $result = $stmt->get_result();
-
-//     $user = $result->fetch_assoc();
-
-//     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-//         // if (empty($_POST["image1"])) {
-//         //     die("Profile image field is not set.");
-//         // }
-//         // if (empty($_POST["banner-image-input"])) {
-//         //     die("Banner image field is not set.");
-//         // }
-
-//         $finfo = new finfo(FILEINFO_MIME_TYPE);
-
-//         $mime_type = $finfo->file($_FILES["image1"]["tmp_name"]);
-
-//         $mime_types = ["image/gif", "image/png", "image/jpeg"];
-
-//         if (!in_array($mime_type, $mime_types)) {
-
-//             exit("Invalid file type");
-//         }
-
-//         // Replace any characters not \w- in the original filename
-//         $pathinfo = pathinfo($_FILES["image1"]["name"]);
-
-//         $base = $pathinfo["filename"];
-
-//         $base = preg_replace("/[^\w-]/", "_", $base);
-
-//         $filename = $base . "." . $pathinfo["extension"];
-
-//         $upload_dir = __DIR__ . "/upload/";
-
-//         $destination = $upload_dir . $filename;
-
-//         // Add a numeric suffix if the file already exists
-//         $i = 1;
-
-//         while (file_exists($destination)) {
-
-//             $filename = time() . ".jpg"; // Generate a unique name with timestamp
-
-//             $destination = $upload_dir . $filename;
-
-//             $i++;
-//         }
-
-//         // Remove the old image if it exists
-//         if (!empty($user["profile_image"])) {
-
-//             $old_image_path = $upload_dir . $user["profile_image"];
-
-//             if (file_exists($old_image_path)) {
-
-//                 unlink($old_image_path); // Deletes the old image
-//             }
-//         }
-
-//         // Move the uploaded file
-//         if (!move_uploaded_file($_FILES["image1"]["tmp_name"], $destination)) {
-
-//             exit("Can't move uploaded file");
-//         }
-
-//         echo "File uploaded successfully.";
-
-//         // Set the profile_image variable
-//         $profile_image = $filename;
-
-
-//         // Prepare and execute the update query
-//         $update_sql = "UPDATE users SET profile_image = ?, banner_image = ? WHERE id = ?";
-
-//         $stmt = $mysqli->prepare($update_sql);
-
-//         $stmt->bind_param(
-//             "ssi",
-//             $profile_image,
-//             $user["id"]
-//         );
-
-//         if ($stmt->execute()) {
-
-//             header("Location: user-profile.php");
-
-//             exit();
-//         } else {
-
-//             die("Error updating profile: " . $stmt->error);
-//         }
-//     }
-// } else {
-
-//     header("location: index.php");
-
-//     exit();
-// }
-
-
-
 
 // Start session
-session_start();
+require __DIR__ . "../includes/sessions.inc.php";
+// Include the database connection
+$mysqli = require __DIR__ . "../includes/database.inc.php";
 
-if (isset($_SESSION["user_id"])) {
-    // Include the database connection
-    $mysqli = require __DIR__ . "../includes/database.inc.php";
+// Fetch user data from the database
+$sql = "SELECT * FROM users WHERE id = ?";
+$stmt = $mysqli->prepare($sql);
+$stmt->bind_param("i", $_SESSION["user_id"]);
+$stmt->execute();
+$result = $stmt->get_result();
+$user = $result->fetch_assoc();
 
-    // Fetch user data from the database
-    $sql = "SELECT * FROM users WHERE id = ?";
-    $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param("i", $_SESSION["user_id"]);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $user = $result->fetch_assoc();
-
-    // Function to handle file upload
-    function handleFileUpload($file, $upload_dir, $old_file = null)
-    {
-        if (!isset($file) || $file['error'] != UPLOAD_ERR_OK) {
-            return null;
-        }
-
-        // Validate file type
-        $finfo = new finfo(FILEINFO_MIME_TYPE);
-        $mime_type = $finfo->file($file["tmp_name"]);
-        $allowed_types = ["image/gif", "image/png", "image/jpeg"];
-        if (!in_array($mime_type, $allowed_types)) {
-            echo "<script>alert('Invalid file type. Please upload a valid image (JPEG, PNG, GIF).');</script>";
-            exit();
-        }
-
-        // Generate a unique filename
-        $pathinfo = pathinfo($file["name"]);
-        $extension = $pathinfo["extension"];
-        $filename = time() . "." . $extension;
-
-        // Define destination path
-        $destination = $upload_dir . $filename;
-
-        // Remove old file if it exists
-        if ($old_file) {
-            $old_file_path = $upload_dir . $old_file;
-            if (file_exists($old_file_path)) {
-                unlink($old_file_path);
-            }
-        }
-
-        // Move the uploaded file
-        if (!move_uploaded_file($file["tmp_name"], $destination)) {
-            exit("Error: Unable to move the uploaded file.");
-        }
-
-        return $filename;
+// Function to handle file upload
+function handleFileUpload($file, $upload_dir, $old_file = null)
+{
+    if (!isset($file) || $file['error'] != UPLOAD_ERR_OK) {
+        return null;
     }
 
-    // Check if form is submitted
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        $profile_upload_dir = __DIR__ . "/upload/";
-        $banner_upload_dir = __DIR__ . "/banner_img/";
+    // Validate file type
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
+    $mime_type = $finfo->file($file["tmp_name"]);
+    $allowed_types = ["image/gif", "image/png", "image/jpeg"];
+    if (!in_array($mime_type, $allowed_types)) {
+        echo "<script>alert('Invalid file type. Please upload a valid image (JPEG, PNG, GIF).');</script>";
+        exit();
+    }
 
-        // Handle profile image upload
-        $profile_image = handleFileUpload(
-            $_FILES["image1"] ?? null,
-            $profile_upload_dir,
-            $user["profile_image"] ?? null
-        );
+    // Generate a unique filename
+    $pathinfo = pathinfo($file["name"]);
+    $extension = $pathinfo["extension"];
+    $filename = time() . "." . $extension;
 
-        // Handle banner image upload
-        $banner_image = handleFileUpload(
-            $_FILES["banner-image-input"] ?? null,
-            $banner_upload_dir,
-            $user["banner_image"] ?? null
-        );
+    // Define destination path
+    $destination = $upload_dir . $filename;
 
-        // Update the database if at least one file was uploaded
-        if ($profile_image || $banner_image) {
-            $profile_image = $profile_image ?: $user["profile_image"];
-            $banner_image = $banner_image ?: $user["banner_image"];
-
-            $update_sql = "UPDATE users SET profile_image = ?, banner_image = ? WHERE id = ?";
-            $stmt = $mysqli->prepare($update_sql);
-            $stmt->bind_param("ssi", $profile_image, $banner_image, $_SESSION["user_id"]);
-
-            if ($stmt->execute()) {
-
-                // header("Location: user-profile.php");
-                echo "<script>alert('Profile updated successfully.'); window.location.href='user-profile.php';</script>";
-                exit();
-            } else {
-                die("Error updating profile: " . $stmt->error);
-            }
-        } else {
-            echo "<script>alert('No files were uploaded.');</script>";
+    // Remove old file if it exists
+    if ($old_file) {
+        $old_file_path = $upload_dir . $old_file;
+        if (file_exists($old_file_path)) {
+            unlink($old_file_path);
         }
     }
-} else {
-    // Redirect to login if the user is not logged in
-    header("location: index.php");
-    exit();
+
+    // Move the uploaded file
+    if (!move_uploaded_file($file["tmp_name"], $destination)) {
+        exit("Error: Unable to move the uploaded file.");
+    }
+
+    return $filename;
 }
+
+// Check if form is submitted
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $profile_upload_dir = __DIR__ . "/upload/";
+    $banner_upload_dir = __DIR__ . "/banner_img/";
+
+    // Handle profile image upload
+    $profile_image = handleFileUpload(
+        $_FILES["image1"] ?? null,
+        $profile_upload_dir,
+        $user["profile_image"] ?? null
+    );
+
+    // Handle banner image upload
+    $banner_image = handleFileUpload(
+        $_FILES["banner-image-input"] ?? null,
+        $banner_upload_dir,
+        $user["banner_image"] ?? null
+    );
+
+    // Update the database if at least one file was uploaded
+    if ($profile_image || $banner_image) {
+        $profile_image = $profile_image ?: $user["profile_image"];
+        $banner_image = $banner_image ?: $user["banner_image"];
+
+        $update_sql = "UPDATE users SET profile_image = ?, banner_image = ? WHERE id = ?";
+        $stmt = $mysqli->prepare($update_sql);
+        $stmt->bind_param("ssi", $profile_image, $banner_image, $_SESSION["user_id"]);
+
+        if ($stmt->execute()) {
+
+            // header("Location: user-profile.php");
+            echo "<script>alert('Profile updated successfully.'); window.location.href='user-profile.php';</script>";
+            exit();
+        } else {
+            die("Error updating profile: " . $stmt->error);
+        }
+    } else {
+        echo "<script>alert('No files were uploaded.');</script>";
+    }
+}
+
+
+
 
 ?>
 
