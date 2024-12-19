@@ -54,45 +54,61 @@ $activation_token_hash = hash("sha256", $activation_token);
 $mysqli = require __DIR__ . "/includes/database.inc.php";
 
 
-$finfo = new finfo(FILEINFO_MIME_TYPE);
+// Check if the user uploaded a file
+if (isset($_FILES["image"]) && $_FILES["image"]["error"] === UPLOAD_ERR_OK) {
+    // Create a FileInfo instance to validate MIME type
+    $finfo = new finfo(FILEINFO_MIME_TYPE);
 
-if (!isset($finfo)) {
-    $mime_type = $finfo->file($_FILES["image"]["tmp_name"]);
+    // Get the temporary file path
+    $tmp_name = $_FILES["image"]["tmp_name"];
 
-    $mime_types = ["image/gif", "image/png", "image/jpeg"];
-
-    if (! in_array($mime_type, $mime_types)) {
-        exit("Invalid file type");
+    // Get the MIME type of the uploaded file
+    if (!is_uploaded_file($tmp_name) || !$mime_type = $finfo->file($tmp_name)) {
+        exit("Invalid file upload.");
     }
-    // Replace any characters not \w- in the original filename
+
+    // Define allowed MIME types
+    $allowed_mime_types = ["image/gif", "image/png", "image/jpeg"];
+
+    // Validate MIME type
+    if (!in_array($mime_type, $allowed_mime_types)) {
+        exit("Invalid file type. Allowed types are GIF, PNG, and JPEG.");
+    }
+
+    // Get original file details
     $pathinfo = pathinfo($_FILES["image"]["name"]);
-
     $base = $pathinfo["filename"];
+    $extension = $pathinfo["extension"];
 
+    // Sanitize the base name
     $base = preg_replace("/[^\w-]/", "_", $base);
 
-    $filename = $base . "." . $pathinfo["extension"];
+    // Ensure the extension matches the MIME type
+    $valid_extensions = [
+        "image/gif" => "gif",
+        "image/png" => "png",
+        "image/jpeg" => "jpg",
+    ];
+    if (!isset($valid_extensions[$mime_type]) || $valid_extensions[$mime_type] !== strtolower($extension)) {
+        $extension = $valid_extensions[$mime_type];
+    }
 
+    // Construct the destination filename
+    $filename = $base . "." . $extension;
     $destination = __DIR__ . "/upload/" . $filename;
 
     // Add a numeric suffix if the file already exists
-    $i = 1;
-
     while (file_exists($destination)) {
-
-        $filename = time() . '.jpg';
+        $filename = $base . "_" . time() . "." . $extension;
         $destination = __DIR__ . "/upload/" . $filename;
-
-        $i++;
     }
 
-
-    if (! move_uploaded_file($_FILES["image"]["tmp_name"], $destination)) {
-
-        exit("Can't move uploaded file");
+    // Move the uploaded file
+    if (!move_uploaded_file($_FILES["image"]["tmp_name"], $destination)) {
+        exit("Failed to move the uploaded file.");
     }
 
-    echo "File uploaded successfully.";
+    // echo "File uploaded successfully to: $destination";
 }
 
 
