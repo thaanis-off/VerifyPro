@@ -55,42 +55,51 @@ $mysqli = require __DIR__ . "/includes/database.inc.php";
 
 
 $finfo = new finfo(FILEINFO_MIME_TYPE);
-$mime_type = $finfo->file($_FILES["image"]["tmp_name"]);
 
-$mime_types = ["image/gif", "image/png", "image/jpeg"];
+if (!isset($finfo)) {
+    $mime_type = $finfo->file($_FILES["image"]["tmp_name"]);
 
-if (! in_array($mime_type, $mime_types)) {
-    exit("Invalid file type");
-}
+    $mime_types = ["image/gif", "image/png", "image/jpeg"];
 
-// Replace any characters not \w- in the original filename
-$pathinfo = pathinfo($_FILES["image"]["name"]);
+    if (! in_array($mime_type, $mime_types)) {
+        exit("Invalid file type");
+    }
+    // Replace any characters not \w- in the original filename
+    $pathinfo = pathinfo($_FILES["image"]["name"]);
 
-$base = $pathinfo["filename"];
+    $base = $pathinfo["filename"];
 
-$base = preg_replace("/[^\w-]/", "_", $base);
+    $base = preg_replace("/[^\w-]/", "_", $base);
 
-$filename = $base . "." . $pathinfo["extension"];
+    $filename = $base . "." . $pathinfo["extension"];
 
-$destination = __DIR__ . "/upload/" . $filename;
-
-// Add a numeric suffix if the file already exists
-$i = 1;
-
-while (file_exists($destination)) {
-
-    $filename = time() . '.jpg';
     $destination = __DIR__ . "/upload/" . $filename;
 
-    $i++;
+    // Add a numeric suffix if the file already exists
+    $i = 1;
+
+    while (file_exists($destination)) {
+
+        $filename = time() . '.jpg';
+        $destination = __DIR__ . "/upload/" . $filename;
+
+        $i++;
+    }
+
+
+    if (! move_uploaded_file($_FILES["image"]["tmp_name"], $destination)) {
+
+        exit("Can't move uploaded file");
+    }
+
+    echo "File uploaded successfully.";
 }
 
-if (! move_uploaded_file($_FILES["image"]["tmp_name"], $destination)) {
 
-    exit("Can't move uploaded file");
-}
 
-echo "File uploaded successfully.";
+
+
+
 
 // Insert data into pending_users table
 $sql = "INSERT INTO users (first_name, last_name, about, email, password_hash, profile_image, account_activation_hash) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -124,7 +133,7 @@ try {
     $mail->addAddress($_POST["email"]);
     $mail->Subject = "Account activation";
     $mail->Body = <<<END
-    Click <a href="http://localhost/web-assignment-system/src/activate-account.php?token=$activation_token">here</a> 
+    Click <a href="http://localhost/web-project/activate-account.php?token=$activation_token">here</a> 
     to Activate your password.
     END;
 

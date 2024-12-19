@@ -67,12 +67,7 @@ if (isset($_SESSION["user_id"])) {
 
                         ?>
 
-                        <!-- <img
-                            src="
-                            <?php //echo htmlspecialchars('./upload/' . $user['profile_image']) 
-                            ?>"
-                            alt="avatar"
-                            class="inline-block relative object-cover object-center w-12 h-12 rounded-lg" /> -->
+
                         <div>
                             <h6
                                 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-blue-gray-900">
