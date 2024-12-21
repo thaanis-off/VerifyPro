@@ -51,17 +51,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
         die("A valid email is required");
     }
-    if (strlen($_POST["password"]) < 8) {
-        die("Password must be at least 8 characters long");
+    if (strlen($_POST["password"]) == null) {
+        die("Password is required");
     }
 
-    if (!preg_match("/[a-z]/i", $_POST['password'])) {
-        die("Password must contain at least one letter");
-    }
-
-    if (!preg_match("/[0-9]/", $_POST['password'])) {
-        die("Password must contain at least one number");
-    }
 
     $is_invalid = true;
 }
@@ -124,7 +117,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <!-- sdsd -->
 
-    <div class="flex min-h-full flex-col max-w-2xl justify-center px-6 py-12 lg:px-8 mx-auto">
+    <div class="flex min-h-full flex-col max-w-md justify-center px-6 py-12 lg:px-8 mx-auto">
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
             <h2 class="mt-10 mb-6 text-xl font-semibold text-gray-900 sm:text-2xl">Login</h2>
             <form class="space-y-6" action="" method="POST" id="login" novalidate>
@@ -146,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <div class="flex items-center justify-between">
                         <label for="password" class="block text-sm/6 font-medium text-gray-900">Password</label>
                         <div class="text-sm">
-                            <a href="forget-password/forgot-password.php" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+                            <a href="forget-password/forgot-password.php" class="font-semibold text-blue-500 hover:text-blue-300">Forgot password?</a>
                         </div>
                     </div>
                     <div class="mt-2">
@@ -171,7 +164,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <!-- Not a member text -->
                     <span class="text-sm text-gray-500">
                         Not a member?
-                        <a href="signup.php" class="font-semibold text-indigo-600 hover:text-indigo-500">Sign Up</a>
+                        <a href="signup.php" class="font-semibold text-blue-500 hover:text-blue-400">Sign Up</a>
                     </span>
                 </div>
             </form>

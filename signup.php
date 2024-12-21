@@ -209,7 +209,10 @@
             <button type="submit"
                 class="mb-10 text-gray-900 bg-gray-100 hover:bg-gray-200    font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  me-2">
                 Sign Up</button>
-
+            <span class="text-sm text-gray-500">
+                Already a member?
+                <a href="login.php" class="font-semibold text-blue-500 hover:text-blue-400">Sign In</a>
+            </span>
 
         </form>
 
