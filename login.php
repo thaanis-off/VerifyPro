@@ -48,7 +48,20 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 
+    if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+        die("A valid email is required");
+    }
+    if (strlen($_POST["password"]) < 8) {
+        die("Password must be at least 8 characters long");
+    }
 
+    if (!preg_match("/[a-z]/i", $_POST['password'])) {
+        die("Password must contain at least one letter");
+    }
+
+    if (!preg_match("/[0-9]/", $_POST['password'])) {
+        die("Password must contain at least one number");
+    }
 
     $is_invalid = true;
 }
@@ -87,24 +100,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             ])
             .addField('#password', [{
-                    rule: 'required',
-                    errorMessage: 'Password is required',
-                },
-                {
-                    validator: (value) => {
-                        // Ensure password is at least 8 characters long, contains at least one letter, and at least one number
-                        return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(value);
-                    },
-                    errorMessage: 'Password must be at least 8 characters long, contain at least one letter and one number',
-
-
-                },
-                {
-                    rule: 'minLength',
-                    value: 6,
-                    errorMessage: 'Password must be at least 6 characters long',
-                },
-            ])
+                rule: 'required',
+                errorMessage: 'Password is required',
+            }, ])
 
             .onSuccess((event) => {
                 document.getElementById("login").submit();
@@ -122,47 +120,63 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <?php endif; ?>
     <?php endif; ?>
 
-    <div class="mx-auto max-w-2xl px-2 sm:px-6 lg:px-8 mt-10">
-        <h2 class="mt-10 mb-6 text-xl font-semibold text-gray-900  sm:text-2xl">Login</h2>
-        <!-- <div id="img-view"
-            style="width: 200px; height: 200px; background-size: cover; background-position: center; margin-top: 20px;">
-        </div> -->
-        <form method="post" novalidate id="login">
-            <div class="mb-6">
-                <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Email
-                    address</label>
-                <input type="email" id="email" name="email" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 
-                    placeholder=" required value="<?= htmlspecialchars($_POST["email"] ?? "") ?>" />
-
-            </div>
-            <div class="mb-6">
-                <label for="password" class="block mb-2 text-sm font-medium text-gray-900 ">Password</label>
-                <input type="password" id="password" name="password"
-                    class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 "
-                    placeholder="•••••••••" required />
-            </div>
 
 
+    <!-- sdsd -->
 
+    <div class="flex min-h-full flex-col max-w-2xl justify-center px-6 py-12 lg:px-8 mx-auto">
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+            <h2 class="mt-10 mb-6 text-xl font-semibold text-gray-900 sm:text-2xl">Login</h2>
+            <form class="space-y-6" action="" method="POST" id="login" novalidate>
+                <div>
+                    <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
+                    <div class="mt-2">
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+                            placeholder=""
+                            required
+                            value="<?= htmlspecialchars($_POST["email"] ?? "") ?>" />
+                    </div>
+                </div>
 
+                <div>
+                    <div class="flex items-center justify-between">
+                        <label for="password" class="block text-sm/6 font-medium text-gray-900">Password</label>
+                        <div class="text-sm">
+                            <a href="forget-password/forgot-password.php" class="font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+                            placeholder="•••••••••"
+                            required />
+                    </div>
+                </div>
 
+                <div class="flex items-center space-x-4">
+                    <!-- Login Button -->
+                    <button
+                        type="submit"
+                        class="text-gray-900 bg-gray-100 hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center">
+                        Sign In
+                    </button>
 
-            <button type="submit"
-                class="mb-10 text-gray-900 bg-gray-100 hover:bg-gray-200  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  me-2">
-                Login</button>
-            <a href="forget-password/forgot-password.php">Forgot Password?</a>
-            <a href="signup.php">Sign Up</a>
-
-
-
-        </form>
-
+                    <!-- Not a member text -->
+                    <span class="text-sm text-gray-500">
+                        Not a member?
+                        <a href="signup.php" class="font-semibold text-indigo-600 hover:text-indigo-500">Sign Up</a>
+                    </span>
+                </div>
+            </form>
+        </div>
     </div>
-
-
-
-
-
 
 
 

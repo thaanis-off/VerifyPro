@@ -95,23 +95,7 @@
                         errorMessage: "Passwords should match",
                     },
                 ])
-                // .addField('#dropzone-file', [
 
-                //     {
-                //         rule: 'required',
-                //         errorMessage: 'Profile is required',
-                //     },
-                //     {
-                //         validator: (value, fields) => {
-
-
-                //             const fileInput = fields['#dropzone-file'].elem; // Access the file input element
-                //             return fileInput.files.length > 0; // Ensure at least one file is selected
-
-                //         },
-                //         errorMessage: 'Please upload a valid file',
-                //     },
-                // ])
                 .onSuccess((event) => {
                     document.getElementById("signup").submit();
                 });
