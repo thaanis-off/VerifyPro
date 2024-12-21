@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $mail->addAddress($user_email);
     $mail->Subject = "Resend: Account Activation";
     $mail->Body = <<<END
-    Click <a href="http://localhost/web-assignment-system/src/activate-account.php?token=$activation_token">here</a> 
+    Click <a href="http://localhost/web-project/activate-account.php?token=$activation_token">here</a> 
     to activate your account.
     END;
 

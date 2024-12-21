@@ -61,9 +61,57 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login with | Dave</title>
     <link href="./output.css" rel="stylesheet">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="app.js"></script>
+    <script src="just-validate.production.min.js" defer></script>
+
 </head>
+
+<script defer>
+    document.addEventListener("DOMContentLoaded", function() {
+        const validation = new JustValidate('#login', {
+            errorLabelStyle: {
+                color: 'rgb(190 18 60)', // Tailwind's red-400 equivalent (or use any color code)
+                fontSize: '0.875rem', // Equivalent to Tailwind's `text-sm`
+                marginTop: '0.25rem', // Equivalent to `mt-1`
+            },
+        });
+
+        validation
+            .addField('#email', [{
+                    rule: 'required',
+                    errorMessage: 'Email is required',
+                },
+                {
+                    rule: 'email',
+                    errorMessage: 'Email is not valid',
+                },
+
+            ])
+            .addField('#password', [{
+                    rule: 'required',
+                    errorMessage: 'Password is required',
+                },
+                {
+                    validator: (value) => {
+                        // Ensure password is at least 8 characters long, contains at least one letter, and at least one number
+                        return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(value);
+                    },
+                    errorMessage: 'Password must be at least 8 characters long, contain at least one letter and one number',
+
+
+                },
+                {
+                    rule: 'minLength',
+                    value: 6,
+                    errorMessage: 'Password must be at least 6 characters long',
+                },
+            ])
+
+            .onSuccess((event) => {
+                document.getElementById("login").submit();
+            });
+
+    });
+</script>
 
 <body>
     <?php if ($_SERVER["REQUEST_METHOD"] === "POST"): ?>
@@ -79,7 +127,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!-- <div id="img-view"
             style="width: 200px; height: 200px; background-size: cover; background-position: center; margin-top: 20px;">
         </div> -->
-        <form method="post" novalidate>
+        <form method="post" novalidate id="login">
             <div class="mb-6">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Email
                     address</label>
@@ -99,7 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
 
-            <button
+            <button type="submit"
                 class="mb-10 text-gray-900 bg-gray-100 hover:bg-gray-200  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  me-2">
                 Login</button>
             <a href="forget-password/forgot-password.php">Forgot Password?</a>

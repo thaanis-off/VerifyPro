@@ -4,7 +4,7 @@ $token = $_GET["token"];
 
 $token_hash = hash("sha256", $token);
 
-$mysqli = require __DIR__ . "/../includes/database.php";
+$mysqli = require __DIR__ . "/../includes/database.inc.php";
 
 $sql = "SELECT * FROM users
         WHERE reset_token_hash = ?";
@@ -31,6 +31,7 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Reset Password</title>
     <meta charset="UTF-8">
@@ -38,6 +39,7 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
     <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
     <script src="js/validation.js" defer></script>
 </head>
+
 <body>
 
     <h1>Reset Password</h1>
@@ -51,11 +53,11 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
 
         <label for="password_confirmation">Repeat password</label>
         <input type="password" id="password_confirmation"
-               name="password_confirmation">
+            name="password_confirmation">
 
         <button>Submit</button>
     </form>
 
 </body>
-</html>
 
+</html>

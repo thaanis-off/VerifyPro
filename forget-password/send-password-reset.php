@@ -8,7 +8,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // Connect to the database
-$mysqli = require __DIR__ . "/../includes/database.php";
+$mysqli = require __DIR__ . "/../includes/database.inc.php";
 
 // Check if the email exists in the database
 $sql = "SELECT * FROM users WHERE email = ?";

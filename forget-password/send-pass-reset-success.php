@@ -46,7 +46,11 @@ $user_email = $_SESSION['email'];
 
     </div>
 
-
+    <script>
+        document.getElementById('openGmailButton').addEventListener('click', function() {
+            window.open('https://mail.google.com', '_blank');
+        });
+    </script>
 </body>
 
 </html>

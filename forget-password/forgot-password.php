@@ -1,28 +1,36 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+// if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $mysqli = require __DIR__ . "/../includes/database.php";
+//     $mysqli = require __DIR__ . "/../includes/database.inc.php";
 
-    // The sprintf function replaces %s with the actual email value
-    $sql = sprintf(
-        "SELECT * FROM users 
-                    WHERE email = '%s'",
-        $mysqli->real_escape_string($_POST["email"])
-    );
+//     // Validate email format
+//     if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+//         die("A valid email is required");
+//     }
 
-    $result = $mysqli->query($sql);
+//     // Use prepared statement to prevent SQL injection
+//     $sql = "SELECT * FROM users WHERE email = ?";
+//     $stmt = $mysqli->prepare($sql);
+//     $stmt->bind_param("s", $_POST["email"]);
+//     $stmt->execute();
 
-    $user = $result->fetch_assoc();
+//     $result = $stmt->get_result();
 
-    // if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-    //     die("A valid email is required");
-    // }
+//     $user = $result->fetch_assoc();
 
+//     // Check if user exists
+//     if ($user) {
+//         // User found, handle accordingly
+//     } else {
+//         // No user found, handle accordingly
+//     }
 
-
-}
+//     // Close the statement
+//     $stmt->close();
+// }
 ?>
+
 
 
 <!DOCTYPE html>

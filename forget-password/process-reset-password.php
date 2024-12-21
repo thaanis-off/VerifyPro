@@ -4,7 +4,7 @@ $token = $_POST["token"];
 
 $token_hash = hash("sha256", $token);
 
-$mysqli = require __DIR__ . "/../includes/database.php";
+$mysqli = require __DIR__ . "/../includes/database.inc.php";
 
 $sql = "SELECT * FROM users
         WHERE reset_token_hash = ?";
@@ -31,11 +31,11 @@ if (strlen($_POST["password"]) < 8) {
     die("Password must be at least 8 characters");
 }
 
-if ( ! preg_match("/[a-z]/i", $_POST["password"])) {
+if (! preg_match("/[a-z]/i", $_POST["password"])) {
     die("Password must contain at least one letter");
 }
 
-if ( ! preg_match("/[0-9]/", $_POST["password"])) {
+if (! preg_match("/[0-9]/", $_POST["password"])) {
     die("Password must contain at least one number");
 }
 
@@ -67,14 +67,13 @@ $stmt->execute();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login with | Dave</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
-    
+
 </head>
 
 <body>
     <h1>Password updated</h1>
 
-   <?php echo "Password updated. You can now <a href='../index.php'>login</a>" ?>
+    <?php echo "Password updated. You can now <a href='../index.php'>login</a>" ?>
 </body>
 
 </html>
-
