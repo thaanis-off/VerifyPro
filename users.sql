@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 21, 2024 at 04:29 PM
+-- Generation Time: Dec 29, 2024 at 05:14 PM
 -- Server version: 10.4.32-MariaDB
--- PHP Version: 8.0.30
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,19 +35,12 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
   `profile_image` varchar(255) DEFAULT NULL,
-  `banner_image` varchar(64) DEFAULT NULL,
+  `banner_image` varchar(255) DEFAULT NULL,
   `reset_token_hash` varchar(64) DEFAULT NULL,
   `reset_token_expires_at` datetime DEFAULT NULL,
   `account_activation_hash` varchar(64) DEFAULT NULL,
   `user_status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `about`, `email`, `password_hash`, `profile_image`, `banner_image`, `reset_token_hash`, `reset_token_expires_at`, `account_activation_hash`, `user_status`) VALUES
-(217, 'Thaanis', 'As', 'TA opfdfdvdcd', 'thaanisoff@gmail.com', '$2y$10$WhRezdJlX7zYpSblLxnYCea7OFjzLRtLm5kcRTxxyXK0UYcHgEZY.', '1734786138.png', NULL, NULL, NULL, NULL, 1);
 
 --
 -- Indexes for dumped tables
@@ -70,7 +63,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=218;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=197;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

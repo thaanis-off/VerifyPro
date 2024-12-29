@@ -1,38 +1,3 @@
-<?php
-
-// if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-//     $mysqli = require __DIR__ . "/../includes/database.inc.php";
-
-//     // Validate email format
-//     if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-//         die("A valid email is required");
-//     }
-
-//     // Use prepared statement to prevent SQL injection
-//     $sql = "SELECT * FROM users WHERE email = ?";
-//     $stmt = $mysqli->prepare($sql);
-//     $stmt->bind_param("s", $_POST["email"]);
-//     $stmt->execute();
-
-//     $result = $stmt->get_result();
-
-//     $user = $result->fetch_assoc();
-
-//     // Check if user exists
-//     if ($user) {
-//         // User found, handle accordingly
-//     } else {
-//         // No user found, handle accordingly
-//     }
-
-//     // Close the statement
-//     $stmt->close();
-// }
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forgot | Password</title>
     <link href="../output.css" rel="stylesheet">
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+    <script src="../JustValidatePlugin/just-validate.production.min.js" defer></script>
+    <script src="../js/forgot-password-validation.js" defer></script>
 </head>
 
 <body>
     <div class="mx-auto max-w-2xl px-2 sm:px-6 lg:px-8 mt-10">
         <h2 class="mt-10 mb-6 text-xl font-semibold text-gray-900  sm:text-2xl">Forgot Password</h2>
 
-        <form method="post" action="send-password-reset.php" novalidate>
+        <form method="post" action="send-password-reset.php" id="forgot-password" novalidate>
 
             <div class="mb-6">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Email

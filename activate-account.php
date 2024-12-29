@@ -64,6 +64,7 @@ try {
     <title>Account activation</title>
     <meta charset="UTF-8">
     <link href="./output.css" rel="stylesheet">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 </head>
 
 <body class="bg-gray-100">

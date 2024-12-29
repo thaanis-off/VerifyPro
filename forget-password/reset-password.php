@@ -36,7 +36,10 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
     <title>Reset Password</title>
     <meta charset="UTF-8">
     <link href="../output.css" rel="stylesheet">
-    <script src="js/validation.js" defer></script>
+    <link rel="icon" href="../assets/favicon.ico" type="image/x-icon">
+    <script src="../JustValidatePlugin/just-validate.production.min.js" defer></script>
+    <script src="../js/reset-password-validation.js" defer></script>
+
 </head>
 
 <body>

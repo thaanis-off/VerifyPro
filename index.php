@@ -24,30 +24,36 @@ if (isset($_SESSION["user_id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link href="./output.css" rel="stylesheet">
-    <script defer src="alphineJs/alphine.min.js"></script>
-    <script src="app.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
 
+
     <?php require_once 'includes/nav.inc.php' ?>
 
-    <div class=" mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8 ">
-
+    <!-- <div class=" mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8 ">
         <img class="shadow-lg inline-block rounded-3xl  ring-stone-200 border-4  border-b-stone-600"
             src="assets/image-13.jpg" alt="">
         <div class="absolute ml-[28rem] mt-[-22rem] sm:px-12 md:px-8 lg:px-8">
             <p class="text-gray-700 font-semibold text-4xl sm:text-left">Order your <br>favourite product here </p>
             <p class=" text-gray-600 font-normal text-base pt-1">Order your product now and enjoy delicious meals
                 delivered
-
                 hot and fresh right to your doorstep. <br> Fast, easy, convenient your doorstep.
                 Fast, easy, convenient! </p>
         </div>
+    </div> -->
 
-
+    <div class="header mx-auto px-4 pt-10 rounded-3xl ring-stone-200 border-4  border-b-stone-600">
+        <div class="header-contents">
+            <h2 class="text-gray-700 font-semibold ">Order your <br>favourite product here </h2>
+            <p class="text-gray-600 font-normal text-base pt-1">Order your product now and enjoy delicious meals
+                delivered
+                hot and fresh right to your doorstep. <br> Fast, easy, convenient your doorstep.
+                Fast, easy, convenient! </p>
+        </div>
     </div>
-
 
 
     <div class="mx-auto max-w-2xl px-4 mt-8 sm:px-6  lg:max-w-7xl lg:px-8">
@@ -327,69 +333,6 @@ if (isset($_SESSION["user_id"])) {
                     <h3 class="mt-4 text-sm text-gray-700">Sushi</h3>
                     <p class="mt-1 text-base font-medium text-gray-900">LKR 1499.00</p>
                 </a>
-
-
-
-
-
-
-                <div class="space-y-3">
-
-
-                    <!-- Toast -->
-                    <!-- <div class="max-w-xs bg-white border border-gray-200 rounded-xl shadow-lg dark:bg-neutral-800 dark:border-neutral-700" role="alert" tabindex="-1" aria-labelledby="hs-toast-success-example-label">
-                        <div class="flex p-4">
-                            <div class="inline-flex items-center justify-center flex-shrink-0">
-                                <svg class="shrink-0 size-4 text-teal-500 mt-0.5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"></path>
-                                </svg>
-                            </div>
-                            <div class="ms-3  mr-10">
-                                <p id="hs-toast-success-example-label" class="text-sm text-gray-700 dark:text-neutral-400">
-                                    This is a success message.
-                                </p>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- End Toast -->
-
-
-
-
-
-                </div>
-
-                <!-- <div id="toast-success"
-                    class="flex items-center  max-w-md p-4 mb-4 text-gray-900 bg-white rounded-2xl shadow"
-                    role="alert">
-                    <div
-                        class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
-                        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0,0,256,256">
-                            <g fill="#20c97c" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-                                <g transform="scale(5.12,5.12)">
-                                    <path d="M25,2c-12.69047,0 -23,10.30953 -23,23c0,12.69047 10.30953,23 23,23c12.69047,0 23,-10.30953 23,-23c0,-12.69047 -10.30953,-23 -23,-23zM25,4c11.60953,0 21,9.39047 21,21c0,11.60953 -9.39047,21 -21,21c-11.60953,0 -21,-9.39047 -21,-21c0,-11.60953 9.39047,-21 21,-21zM34.98828,14.98828c-0.3299,0.0065 -0.63536,0.17531 -0.81641,0.45117l-10.20117,15.03711l-7.29102,-6.76562c-0.26069,-0.25084 -0.63652,-0.34135 -0.98281,-0.23667c-0.3463,0.10468 -0.60907,0.38821 -0.68715,0.74145c-0.07809,0.35324 0.04068,0.72112 0.31059,0.96201l8.99609,8.34766l11.51172,-16.96484c0.2153,-0.3085 0.23926,-0.71173 0.06201,-1.04356c-0.17725,-0.33183 -0.52573,-0.53612 -0.90186,-0.5287z"></path>
-                                </g>
-                            </g>
-                        </svg>
-                        <span class="sr-only">Check icon</span>
-                    </div>
-                    <div class="ms-3 text-sm font-semibold">Saved</div>
-                    <button type="button"
-                        class="ms-auto me-1 mt-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg  p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-4 w-4 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
-                        data-dismiss-target="#toast-success" aria-label="Close">
-                        <span class="sr-only">Close</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
-                    </button>
-                </div> -->
-
-
-
-
-
                 <!-- More products... -->
             </div>
 
@@ -401,7 +344,6 @@ if (isset($_SESSION["user_id"])) {
 
     <?php require_once 'includes/footer.inc.php' ?>
 
-    <script src="js/main.js"></script>
 </body>
 
 </html>

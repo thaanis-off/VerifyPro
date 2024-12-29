@@ -29,8 +29,8 @@ if (isset($_SESSION["user_id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./output.css" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <title>Index page</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <title>User dashboard</title>
 </head>
 
 <body>

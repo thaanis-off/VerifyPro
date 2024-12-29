@@ -23,7 +23,8 @@ if (isset($_SESSION["user_id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="output.css" rel="stylesheet">
     <script defer src="alphineJs/alphine.min.js"></script>
-    <title>Card overview</title>
+    <title>Contact us</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
