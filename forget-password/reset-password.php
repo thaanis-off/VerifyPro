@@ -35,29 +35,59 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
 <head>
     <title>Reset Password</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
-    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
+    <link href="../output.css" rel="stylesheet">
     <script src="js/validation.js" defer></script>
 </head>
 
 <body>
 
-    <h1>Reset Password</h1>
+    <div class="flex min-h-full flex-col max-w-md justify-center px-6 py-12 lg:px-8 mx-auto">
+        <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+            <h2 class="mt-10 mb-6 text-xl font-semibold text-gray-900 sm:text-2xl">Reset Password</h2>
+            <form class="space-y-6" action="process-reset-password.php" method="POST" id="reset-password" novalidate>
+                <div>
+                    <label for="email" class="block text-sm/6 font-medium text-gray-900">Password</label>
+                    <div class="mt-2">
+                        <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+                            placeholder="•••••••••"
+                            required />
+                    </div>
+                </div>
 
-    <form method="post" action="process-reset-password.php">
+                <div>
+                    <div class="flex items-center justify-between">
+                        <label for="password_confirmation" class="block text-sm/6 font-medium text-gray-900">Confrim Password</label>
 
-        <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
+                    </div>
+                    <div class="mt-2">
+                        <input
+                            type="password"
+                            id="password_confirmation"
+                            name="password_confirmation"
+                            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+                            placeholder="•••••••••"
+                            required />
+                    </div>
+                </div>
 
-        <label for="password">New password</label>
-        <input type="password" id="password" name="password">
+                <div class="flex items-center space-x-4">
+                    <!-- Login Button -->
+                    <button
+                        type="submit"
+                        class="text-gray-900 bg-gray-100 hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center">
+                        Submit
+                    </button>
 
-        <label for="password_confirmation">Repeat password</label>
-        <input type="password" id="password_confirmation"
-            name="password_confirmation">
 
-        <button>Submit</button>
-    </form>
-
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>

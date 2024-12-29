@@ -65,15 +65,33 @@ $stmt->execute();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login with | Dave</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <title>ABC</title>
+    <link href="../output.css" rel="stylesheet">
 
 </head>
 
-<body>
-    <h1>Password updated</h1>
 
-    <?php echo "Password updated. You can now <a href='../index.php'>login</a>" ?>
+
+<body class="bg-gray-100">
+    <div class="text-center ">
+        <h1 class="font-semibold text-3xl mt-44">Password Updated</h1>
+        <p class="pt-2 text-gray-900">Password updated successful you can now,
+        </p>
+
+
+
+        <a href="../sign-in.php">
+            <button type="button"
+                class="mt-3 pl-12 pr-12 text-gray-900 font-semibold hover:bg-zinc-200 bg-gray-200  rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 me-2 mb-2 ">
+
+                Sign In
+            </button>
+            <br>
+        </a>
+
+    </div>
+
+
 </body>
 
 </html>

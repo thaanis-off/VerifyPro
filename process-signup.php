@@ -1,6 +1,14 @@
 <?php
 session_start();
 
+// Check if the CSRF token is valid
+if (empty($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+    die("Invalid CSRF token");
+}
+
+// Optionally regenerate the token to prevent reuse
+unset($_SESSION['csrf_token']);
+
 // Client-side validation bypassed, perform server-side checks
 if (empty($_POST["first_name"])) {
     die("First name is required");
@@ -38,12 +46,6 @@ if (!isset($_FILES["image"])) {
     die("Profile image field is not set.");
 }
 
-// if (empty($_POST["image"])) {
-//     die("Profile image is required.");
-// }
-
-
-
 // Hash the password
 $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
@@ -52,7 +54,6 @@ $activation_token = bin2hex(random_bytes(16));
 $activation_token_hash = hash("sha256", $activation_token);
 
 $mysqli = require __DIR__ . "/includes/database.inc.php";
-
 
 // Check if the user uploaded a file
 if (isset($_FILES["image"]) && $_FILES["image"]["error"] === UPLOAD_ERR_OK) {
@@ -107,15 +108,7 @@ if (isset($_FILES["image"]) && $_FILES["image"]["error"] === UPLOAD_ERR_OK) {
     if (!move_uploaded_file($_FILES["image"]["tmp_name"], $destination)) {
         exit("Failed to move the uploaded file.");
     }
-
-    // echo "File uploaded successfully to: $destination";
 }
-
-
-
-
-
-
 
 // Insert data into pending_users table
 $sql = "INSERT INTO users (first_name, last_name, about, email, password_hash, profile_image, account_activation_hash) VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -165,20 +158,14 @@ try {
     $_SESSION['user_email'] = $_POST['email']; // Store the email
     $_SESSION['signup_token'] = bin2hex(random_bytes(16)); // Generate a temporary token
 
-
-    header("Location: signup-success.php");
+    header("Location: sign-up-success.php");
     exit;
-
-    //mysqli_sql_exception is a subclass of Exception specifically designed for database-related errors in MySQLi.
 } catch (mysqli_sql_exception $e) {
     if ($e->getCode() === 1062) {
         die("Email already taken. Please use another email.");
     } else {
         echo "Error: " . $e->getMessage() . " (Error Code: " . $e->getCode() . ")";
     }
-
-    // Exception is more general and will catch all types of exceptions, not the MySQL-specific details.
 } catch (Exception $e) {
-    // Handle any other exceptions
     echo "Error: " . $e->getMessage();
 }

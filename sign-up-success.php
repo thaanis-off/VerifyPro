@@ -3,7 +3,7 @@ session_start();
 
 // Check if the signup token and email are set
 if (!isset($_SESSION['signup_token']) || !isset($_SESSION['user_email'])) {
-    echo "<script>alert('Sign up first to access this page');  window.location.href='signup.php'</script>";
+    echo "<script>alert('Sign up first to access this page');  window.location.href='sign-up.php'</script>";
     exit();
 }
 

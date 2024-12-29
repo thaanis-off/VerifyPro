@@ -22,6 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['update'])) {
     $params = [];
     $types = "";
 
+
     // Check each field and add it to the update query if provided
     if (!empty($_POST["first_name"])) {
         $updates[] = "first_name = ?";
@@ -51,21 +52,25 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['update'])) {
 
         // Check if current password matches
         if (!password_verify($current_password, $user["password_hash"])) {
-            die("Current password is incorrect.");
+            echo "<script>alert('Current password is incorrect.'); window.location.href='';</script>";
+            die();
         }
         // Require new password and confirmation if current password is provided
         if (empty($new_password) || empty($confirm_password)) {
-            die("Please provide both new password and confirmation.");
+            echo "<script>alert('Please provide both new password and confirmation.'); window.location.href='';</script>";
+            die();
         }
 
         // Check if new passwords match
         if ($new_password !== $confirm_password) {
-            die("New passwords do not match.");
+            echo "<script>alert('Confirm passwords do not match.'); window.location.href='';</script>";
+            die();
         }
 
         // Validate password strength
         if (strlen($new_password) < 8) {
-            die("New password must be at least 8 characters long.");
+            echo "<script>alert('New password must be at least 8 characters long.'); window.location.href='';</script>";
+            die();
         }
 
         // Hash the new password
@@ -76,11 +81,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['update'])) {
         $types .= "s";
     }
 
+
     // If no fields to update, do nothing
     if (empty($updates)) {
         die("No fields to update.");
     }
-
     // Prepare the final SQL query
     $sql = "UPDATE users SET " . implode(", ", $updates) . " WHERE id = ?";
     $params[] = $_SESSION["user_id"];

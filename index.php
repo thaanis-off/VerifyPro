@@ -24,7 +24,7 @@ if (isset($_SESSION["user_id"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link href="./output.css" rel="stylesheet">
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="alphineJs/alphine.min.js"></script>
     <script src="app.js"></script>
 </head>
 
@@ -36,8 +36,8 @@ if (isset($_SESSION["user_id"])) {
 
         <img class="shadow-lg inline-block rounded-3xl  ring-stone-200 border-4  border-b-stone-600"
             src="assets/image-13.jpg" alt="">
-        <div class="absolute ml-[28rem] mt-[-22rem]">
-            <p class="text-gray-700 font-semibold text-4xl ">Order your <br>favourite product here </p>
+        <div class="absolute ml-[28rem] mt-[-22rem] sm:px-12 md:px-8 lg:px-8">
+            <p class="text-gray-700 font-semibold text-4xl sm:text-left">Order your <br>favourite product here </p>
             <p class=" text-gray-600 font-normal text-base pt-1">Order your product now and enjoy delicious meals
                 delivered
 
@@ -243,7 +243,7 @@ if (isset($_SESSION["user_id"])) {
             <h2 class="text-2xl font-semibold mb-10 text-gray-800">Popular Products</h2>
 
             <div class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                <a href="product-overview.html" class="group">
+                <a href="product-overview.php" class="group">
                     <div
                         class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                         <img src="assets/t-shirt.jpg"

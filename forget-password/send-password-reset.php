@@ -47,13 +47,13 @@ if ($result->num_rows > 0) {
         $mail->addAddress($email);
         $mail->Subject = "Password Reset";
         $mail->Body = <<<END
-        Click <a href="http://localhost/project/forget-password/reset-password.php?token=$token">here</a> 
+        Click <a href="http://localhost/web-project/forget-password/reset-password.php?token=$token">here</a> 
         to reset your password.
         END;
 
         try {
             $mail->send();
-            header("location: send-pass-reset-success.php");
+            header("location: forgot-password-confirm.php");
             exit();
             //echo "Message sent, please check your inbox.";
         } catch (Exception $e) {

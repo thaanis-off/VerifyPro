@@ -1,3 +1,4 @@
+<?php require_once __DIR__ . '/includes/csrf_token.inc.php'; ?>
 <!doctype html>
 <html>
 
@@ -5,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./output.css" rel="stylesheet">
-    <script src="just-validate.production.min.js" defer></script>
+    <script src="JustValidatePlugin/just-validate.production.min.js" defer></script>
     <script src="app.js" defer></script>
 
 
@@ -118,6 +119,7 @@
                 <div>
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900">First
                         name</label>
+                    <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                     <input type="text" id="first_name" name="first_name"
                         class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
                         placeholder="" required />
@@ -211,7 +213,7 @@
                 Sign Up</button>
             <span class="text-sm text-gray-500">
                 Already a member?
-                <a href="login.php" class="font-semibold text-blue-500 hover:text-blue-400">Sign In</a>
+                <a href="sign-in.php" class="font-semibold text-blue-500 hover:text-blue-400">Sign In</a>
             </span>
 
         </form>

@@ -83,7 +83,7 @@ if (isset($_SESSION["user_id"])) {
 
 
 
-                    <a href="user-profile-image.php?id=<?php echo $user['id']; ?>">
+                    <a href="edit-user-profile-image.php?id=<?php echo $user['id']; ?>">
                         <button type="button"
                             class="ml-12  text-gray-900 bg-gray-100 hover:bg-gray-200  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  me-2 mb-2">
                             Edit
@@ -143,7 +143,7 @@ if (isset($_SESSION["user_id"])) {
 
     </div>
 
-    <a href="edit_profile.php?id=<?php echo $user['id']; ?>">
+    <a href="edit-user-datails.php?id=<?php echo $user['id']; ?>">
         <button type="button"
             class=" ml-12  text-gray-900 bg-gray-100 hover:bg-gray-200  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  me-2 mb-2">
             Edit

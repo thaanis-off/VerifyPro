@@ -1,5 +1,6 @@
 <?php
 
+require_once __DIR__ . '/includes/csrf_token.inc.php';
 
 $is_invalid = false;
 
@@ -7,7 +8,12 @@ $user = null;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-    $mysqli = require_once __DIR__ . "/includes/database.inc.php";;
+    $mysqli = require_once __DIR__ . "/includes/database.inc.php";
+
+    // Validate CSRF token
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        die("CSRF token validation failed.");
+    }
 
     $stmt = $mysqli->prepare("SELECT * FROM users WHERE email = ?");
 
@@ -67,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login with | Dave</title>
     <link href="./output.css" rel="stylesheet">
-    <script src="just-validate.production.min.js" defer></script>
+    <script src="JustValidatePlugin/just-validate.production.min.js" defer></script>
 
 </head>
 
@@ -124,6 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 <div>
                     <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
                     <div class="mt-2">
+                        <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>">
                         <input
                             type="email"
                             id="email"
@@ -164,7 +171,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     <!-- Not a member text -->
                     <span class="text-sm text-gray-500">
                         Not a member?
-                        <a href="signup.php" class="font-semibold text-blue-500 hover:text-blue-400">Sign Up</a>
+                        <a href="sign-up.php" class="font-semibold text-blue-500 hover:text-blue-400">Sign Up</a>
                     </span>
                 </div>
             </form>

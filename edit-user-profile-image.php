@@ -120,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <div class="mx-auto max-w-2xl px-2 sm:px-6 lg:px-8 mt-10">
         <h2 class="mt-10 mb-6 text-xl font-semibold text-gray-900  sm:text-2xl">Edit image</h2>
 
-        <form action="user-profile-image.php" method="post" enctype="multipart/form-data" novalidate>
+        <form action="" method="post" enctype="multipart/form-data" novalidate>
 
 
             <div class="mb-6">
