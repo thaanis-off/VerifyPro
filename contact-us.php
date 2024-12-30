@@ -92,14 +92,10 @@ if (isset($_SESSION["user_id"])) {
         </form>
     </div>
 
-
-
-
     <!-- footer start -->
     <?php require_once 'includes/footer.inc.php' ?>
     <!-- footer end -->
     <script src="num.js"></script>
-
 
 </body>
 

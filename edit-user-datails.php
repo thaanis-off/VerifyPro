@@ -117,8 +117,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['update'])) {
 
 <body>
 
-
-
     <div class="mx-auto max-w-2xl px-2 sm:px-6 lg:px-8 mt-10">
         <h2 class="mt-10 mb-6 text-xl font-semibold text-gray-900  sm:text-2xl">Edit Profile</h2>
         <!-- <div id="img-view"
@@ -140,15 +138,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['update'])) {
                         class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
                         placeholder="" value="<?php echo htmlspecialchars($user["last_name"]); ?>" />
                 </div>
-
-
-
-
-
-
-
-
-
 
             </div>
             <!-- profile here -->
@@ -194,15 +183,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['update'])) {
 
     </div>
 
-
-
-
-
-
-
     <script src="main.js"></script>
-
-
 
 </body>
 

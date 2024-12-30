@@ -34,11 +34,6 @@ if (isset($_SESSION["user_id"])) {
     <?php require_once 'includes/nav.inc.php' ?>
     <!-- nav end -->
 
-
-
-
-
-
     <div class="relative isolate overflow-hidden  py-24 sm:py-32">
 
         <div class="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"

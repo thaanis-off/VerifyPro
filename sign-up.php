@@ -38,15 +38,6 @@
                         placeholder="" required />
                 </div>
 
-
-
-
-
-
-
-
-
-
             </div>
             <!-- profile here -->
 
@@ -62,7 +53,8 @@
             <div class="mb-6">
                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Email
                     address</label>
-                <input type="email" id="email" name="email" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 
+                <input type="email" id="email" name="email" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block 
+                w-full p-2 
                     placeholder=" required />
 
             </div>
@@ -80,13 +72,7 @@
                     placeholder="•••••••••" required />
             </div>
             <div class="mb-6">
-
-
-                <label for="profile" class="block mb-2 text-sm font-medium text-gray-900">Profile
-                </label>
-
-
-
+                <label for="profile" class="block mb-2 text-sm font-medium text-gray-900">Profile</label>
                 <div class="flex items-center justify-center w-full">
                     <label for="dropzone-file" id="drop-area"
                         class="flex flex-col items-center justify-center w-full h-52 border-2 border-dashed border-gray-300  rounded-lg cursor-pointer bg-gray-50">
@@ -108,11 +94,7 @@
                     </label>
                 </div>
 
-
-
                 <!-- Image preview area -->
-
-
             </div>
             <button type="submit"
                 class="mb-10 text-gray-900 bg-gray-100 hover:bg-gray-200    font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  me-2">
@@ -121,15 +103,8 @@
                 Already a member?
                 <a href="sign-in.php" class="font-semibold text-blue-500 hover:text-blue-400">Sign In</a>
             </span>
-
         </form>
-
     </div>
-
-
-
-
-
 </body>
 
 </html>

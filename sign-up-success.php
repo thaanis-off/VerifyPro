@@ -31,9 +31,6 @@ unset($_SESSION['signup_token']);
             <br> Click the link inside to get started.
         </p>
 
-
-
-
         <button type="button" id="openGmailButton"
             class="mt-3 pl-12 pr-12 text-gray-900 font-semibold hover:bg-zinc-200 bg-gray-200  rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 me-2 mb-2 ">
             <svg class="w-4 h-4 me-2 -ms-1 text-[#626890]" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
@@ -59,13 +56,11 @@ unset($_SESSION['signup_token']);
         </button>
         <div id="resendMessage" class="text-sm font-medium text-green-700 mt-2"></div>
     </div>
+
     <script>
         document.getElementById('openGmailButton').addEventListener('click', function() {
             window.open('https://mail.google.com', '_blank');
         });
-
-
-
 
         // Select the "Resend Email" button using its ID
         document.getElementById('resendEmailButton').addEventListener('click', function() {
@@ -95,8 +90,6 @@ unset($_SESSION['signup_token']);
                 });
         });
     </script>
-
-
 </body>
 
 </html>

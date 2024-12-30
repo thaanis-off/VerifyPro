@@ -72,15 +72,10 @@ try {
     <div class="text-center ">
         <h1 class="font-semibold text-3xl mt-44">Account activation</h1>
         <p class="pt-2 text-gray-900">Account activated succesful. you can now,
-
-
         </p>
         <a class="mb-10 text-blue-700 bg-gray-100 hover:bg-gray-200  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center  me-2" href="./sign-in.php">Login</a>
         <br>
-
-
     </div>
-
 
 </body>
 

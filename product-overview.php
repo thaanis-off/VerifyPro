@@ -35,7 +35,6 @@ if (isset($_SESSION["user_id"])) {
     <div class="bg-white">
         <div class="pt-6">
 
-
             <!-- Image gallery -->
             <div class="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
                 <div class="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">

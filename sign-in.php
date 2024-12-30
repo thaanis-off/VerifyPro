@@ -78,8 +78,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <title>Sign in</title>
 </head>
 
-
-
 <body>
     <?php if ($_SERVER["REQUEST_METHOD"] === "POST"): ?>
         <?php if (!$user): ?>
@@ -88,10 +86,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <?php echo "<script>alert('Invalid email or password');</script>"; ?>
         <?php endif; ?>
     <?php endif; ?>
-
-
-
-    <!-- sdsd -->
 
     <div class="flex min-h-full flex-col max-w-md justify-center px-6 py-12 lg:px-8 mx-auto">
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -147,9 +141,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             </form>
         </div>
     </div>
-
-
-
 </body>
 
 </html>

@@ -18,8 +18,6 @@ if (isset($_SESSION["user_id"])) {
 }
 
 
-
-
 ?>
 <!doctype html>
 <html>
@@ -67,7 +65,6 @@ if (isset($_SESSION["user_id"])) {
 
                         ?>
 
-
                         <div>
                             <h6
                                 class="block antialiased tracking-normal font-sans text-base font-semibold leading-relaxed text-blue-gray-900">
@@ -80,7 +77,6 @@ if (isset($_SESSION["user_id"])) {
                         </div>
 
                     </div>
-
 
 
                     <a href="edit-user-profile-image.php?id=<?php echo $user['id']; ?>">
@@ -101,7 +97,6 @@ if (isset($_SESSION["user_id"])) {
         </div>
         <hr>
     </section>
-
 
     <div class="container px-14">
         <div class="px-4 sm:px-0">
@@ -134,13 +129,10 @@ if (isset($_SESSION["user_id"])) {
                     <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
                         <?php echo htmlspecialchars($user["about"]) ?>
                     </dd>
-
                 </div>
 
             </dl>
-
         </div>
-
     </div>
 
     <a href="edit-user-datails.php?id=<?php echo $user['id']; ?>">

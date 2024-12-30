@@ -64,5 +64,5 @@ if ($result->num_rows > 0) {
     }
 } else {
     // Email does not exist
-    echo "Email doesn't exist in our records. Please try a valid email.";
+    echo "<script>alert('Email does not exist in our records. Please try a valid email.'); window.location.href='forgot-password.php';</script>";
 }

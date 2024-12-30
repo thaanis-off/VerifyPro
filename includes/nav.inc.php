@@ -74,7 +74,8 @@
                         </div>
                     </div>
                 <?php else: ?>
-                    <a class="text-white bg-zinc-900 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2 text-center"
+                    <a class="text-white bg-zinc-900 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full 
+                    sm:w-auto px-5 py-2 text-center"
                         href="sign-in.php">
                         <button type="submit" class="">Sign in</button>
                     </a>

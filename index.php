@@ -30,7 +30,6 @@ if (isset($_SESSION["user_id"])) {
 
 <body>
 
-
     <?php require_once 'includes/nav.inc.php' ?>
 
     <div class="header mx-auto px-4 pt-10 rounded-3xl ring-stone-200 border-4  border-b-stone-600">
@@ -42,7 +41,6 @@ if (isset($_SESSION["user_id"])) {
                 Fast, easy, convenient! </p>
         </div>
     </div>
-
 
     <div class="mx-auto max-w-2xl px-4 mt-8 sm:px-6  lg:max-w-7xl lg:px-8">
         <section class=" antialiased ">
@@ -77,7 +75,8 @@ if (isset($_SESSION["user_id"])) {
                         <svg class="me-2 h-4 w-4 shrink-0 text-gray-900 dark:text-black" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M16.872 9.687 20 6.56 17.44 4 4 17.44 6.56 20 16.873 9.687Zm0 0-2.56-2.56M6 7v2m0 0v2m0-2H4m2 0h2m7 7v2m0 0v2m0-2h-2m2 0h2M8 4h.01v.01H8V4Zm2 2h.01v.01H10V6Zm2-2h.01v.01H12V4Zm8 8h.01v.01H20V12Zm-2 2h.01v.01H18V14Zm2 2h.01v.01H20V16Z">
+                                d="M16.872 9.687 20 6.56 17.44 4 4 17.44 6.56 20 16.873 9.687Zm0 0-2.56-2.56M6 7v2m0 0v2m0-2H4m2 0h2m7 7v2m0 0v2m0-2h-2m2 
+                                0h2M8 4h.01v.01H8V4Zm2 2h.01v.01H10V6Zm2-2h.01v.01H12V4Zm8 8h.01v.01H20V12Zm-2 2h.01v.01H18V14Zm2 2h.01v.01H20V16Z">
                             </path>
                         </svg>
                         <span class="text-sm font-medium text-gray-900 dark:text-gray-700">Collectibles &amp;
@@ -108,7 +107,9 @@ if (isset($_SESSION["user_id"])) {
                         <svg class="me-2 h-4 w-4 shrink-0 text-gray-900 dark:text-black" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-width="2"
-                                d="M4.37 7.657c2.063.528 2.396 2.806 3.202 3.87 1.07 1.413 2.075 1.228 3.192 2.644 1.805 2.289 1.312 5.705 1.312 6.705M20 15h-1a4 4 0 0 0-4 4v1M8.587 3.992c0 .822.112 1.886 1.515 2.58 1.402.693 2.918.351 2.918 2.334 0 .276 0 2.008 1.972 2.008 2.026.031 2.026-1.678 2.026-2.008 0-.65.527-.9 1.177-.9H20M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z">
+                                d="M4.37 7.657c2.063.528 2.396 2.806 3.202 3.87 1.07 1.413 2.075 1.228 3.192 2.644 1.805 2.289 1.312 5.705 1.312 6.705M20 1
+                                5h-1a4 4 0 0 0-4 4v1M8.587 3.992c0 .822.112 1.886 1.515 2.58 1.402.693 2.918.351 2.918 2.334 0 .276 0 2.008 1.972 2.008 2.026.031 
+                                2.026-1.678 2.026-2.008 0-.65.527-.9 1.177-.9H20M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z">
                             </path>
                         </svg>
                         <span class="text-sm font-medium text-gray-900 dark:text-gray-700">Sports &amp; Outdoors</span>
@@ -118,7 +119,8 @@ if (isset($_SESSION["user_id"])) {
                         <svg class="me-2 h-4 w-4 shrink-0 text-gray-900 dark:text-black" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 7h.01m3.486 1.513h.01m-6.978 0h.01M6.99 12H7m9 4h2.706a1.957 1.957 0 0 0 1.883-1.325A9 9 0 1 0 3.043 12.89 9.1 9.1 0 0 0 8.2 20.1a8.62 8.62 0 0 0 3.769.9 2.013 2.013 0 0 0 2.03-2v-.857A2.036 2.036 0 0 1 16 16Z">
+                                d="M12 7h.01m3.486 1.513h.01m-6.978 0h.01M6.99 12H7m9 4h2.706a1.957 1.957 0 0 0 1.883-1.325A9 9 0 1 0 3.043 12.89 9.1 9
+                                .1 0 0 0 8.2 20.1a8.62 8.62 0 0 0 3.769.9 2.013 2.013 0 0 0 2.03-2v-.857A2.036 2.036 0 0 1 16 16Z">
                             </path>
                         </svg>
                         <span class="text-sm font-medium text-gray-900 dark:text-gray-700">Painting &amp; Hobby</span>
@@ -226,10 +228,6 @@ if (isset($_SESSION["user_id"])) {
             </div>
         </section>
     </div>
-
-
-
-
 
     <!-- product start -->
     <div class="bg-white">

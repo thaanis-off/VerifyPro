@@ -1,6 +1,5 @@
 <?php
 
-
 // Start session
 require __DIR__ . "../includes/sessions.inc.php";
 // Include the database connection
@@ -94,14 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "<script>alert('No files were uploaded.');</script>";
     }
 }
-
-
-
-
 ?>
-
-
-
 <!doctype html>
 <html>
 
@@ -116,14 +108,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 <body>
 
-
-
     <div class="mx-auto max-w-2xl px-2 sm:px-6 lg:px-8 mt-10">
         <h2 class="mt-10 mb-6 text-xl font-semibold text-gray-900  sm:text-2xl">Edit image</h2>
 
         <form action="" method="post" enctype="multipart/form-data" novalidate>
-
-
             <div class="mb-6">
                 <label for="profile" class="block mb-2 text-sm font-medium text-gray-900">Profile</label>
                 <div class="flex items-center justify-center w-full">
@@ -167,22 +155,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 </div>
             </div>
 
-
-
-
-
-
             <button type="submit"
                 class="text-white bg-zinc-900  focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2 text-center">
                 Update</button>
         </form>
 
     </div>
-
-
-
-
-
 
     <script>
         function initializeDropArea(dropAreaId, inputFileId, imgNameId, uploadTextId, uploadIconId) {
@@ -223,11 +201,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         initializeDropArea("drop-area-1", "dropzone-file-1", "img-name-1", "dropdownContent-1", "drop-area-1 svg");
         initializeDropArea("drop-area-2", "dropzone-file-2", "img-name-2", "dropdownContent-2", "drop-area-2 svg");
     </script>
-
-
-
-
-
 
 </body>
 

@@ -56,7 +56,8 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
                             type="password"
                             id="password"
                             name="password"
-                            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+                            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 
+                            block w-full p-2"
                             placeholder="•••••••••"
                             required />
                     </div>
@@ -72,7 +73,8 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
                             type="password"
                             id="password_confirmation"
                             name="password_confirmation"
-                            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2"
+                            class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block
+                             w-full p-2"
                             placeholder="•••••••••"
                             required />
                     </div>
@@ -85,8 +87,6 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
                         class="text-gray-900 bg-gray-100 hover:bg-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex items-center">
                         Submit
                     </button>
-
-
                 </div>
             </form>
         </div>
