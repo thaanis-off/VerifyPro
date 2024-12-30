@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2024 at 05:14 PM
+-- Generation Time: Dec 30, 2024 at 12:38 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -33,7 +33,7 @@ CREATE TABLE `users` (
   `last_name` varchar(128) NOT NULL,
   `about` text NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password_hash` varchar(255) NOT NULL,
+  `hashed_password` varchar(255) NOT NULL,
   `profile_image` varchar(255) DEFAULT NULL,
   `banner_image` varchar(255) DEFAULT NULL,
   `reset_token_hash` varchar(64) DEFAULT NULL,
@@ -41,6 +41,13 @@ CREATE TABLE `users` (
   `account_activation_hash` varchar(64) DEFAULT NULL,
   `user_status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `about`, `email`, `hashed_password`, `profile_image`, `banner_image`, `reset_token_hash`, `reset_token_expires_at`, `account_activation_hash`, `user_status`) VALUES
+(197, 'Mohamed ', 'Thaanis', 'sjhhs ', 'thaanisoff@gmail.com', '$2y$10$r6rJkFkmJJjOranokuhhievbmxY5ZFQv/OetQi6ro7LYyUcPTniIe', '1735546081.png', NULL, NULL, NULL, NULL, 1);
 
 --
 -- Indexes for dumped tables
@@ -63,7 +70,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=197;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
