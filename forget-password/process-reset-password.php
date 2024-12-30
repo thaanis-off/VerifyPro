@@ -43,17 +43,17 @@ if ($_POST["password"] !== $_POST["password_confirmation"]) {
     die("Passwords must match");
 }
 
-$password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+$hashed_password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
 $sql = "UPDATE users
-        SET password_hash = ?,
+        SET hashed_password = ?,
             reset_token_hash = NULL,
             reset_token_expires_at = NULL
         WHERE id = ?";
 
 $stmt = $mysqli->prepare($sql);
 
-$stmt->bind_param("ss", $password_hash, $user["id"]);
+$stmt->bind_param("ss", $hashed_password, $user["id"]);
 
 $stmt->execute();
 

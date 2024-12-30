@@ -47,7 +47,7 @@ if (!isset($_FILES["image"])) {
 }
 
 // Hash the password
-$password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+$hashed_password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
 $activation_token = bin2hex(random_bytes(16));
 
@@ -111,7 +111,7 @@ if (isset($_FILES["image"]) && $_FILES["image"]["error"] === UPLOAD_ERR_OK) {
 }
 
 // Insert data into pending_users table
-$sql = "INSERT INTO users (first_name, last_name, about, email, password_hash, profile_image, account_activation_hash) VALUES (?, ?, ?, ?, ?, ?, ?)";
+$sql = "INSERT INTO users (first_name, last_name, about, email, hashed_password, profile_image, account_activation_hash) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 try {
     // Prepare the statement
@@ -128,7 +128,7 @@ try {
         $_POST["last_name"],
         $_POST["about"],
         $_POST["email"],
-        $password_hash,
+        $hashed_password,
         $filename,
         $activation_token_hash
     );

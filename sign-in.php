@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if ($user && $user["account_activation_hash"] === null) {
 
-        if (password_verify($_POST["password"], $user["password_hash"])) {
+        if (password_verify($_POST["password"], $user["hashed_password"])) {
 
             if ($user["user_status"] == 0) {
                 // Update user_status to 1

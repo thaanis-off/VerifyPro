@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['update'])) {
 
 
         // Check if current password matches
-        if (!password_verify($current_password, $user["password_hash"])) {
+        if (!password_verify($current_password, $user["hashed_password"])) {
             echo "<script>alert('Current password is incorrect.'); window.location.href='';</script>";
             die();
         }
@@ -74,10 +74,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['update'])) {
         }
 
         // Hash the new password
-        $new_password_hashed = password_hash($new_password, PASSWORD_DEFAULT);
+        $new_hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
 
-        $updates[] = "password_hash = ?";
-        $params[] = $new_password_hashed;
+        $updates[] = "hashed_password = ?";
+        $params[] = $new_hashed_password;
         $types .= "s";
     }
 
