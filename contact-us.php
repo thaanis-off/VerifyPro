@@ -12,7 +12,7 @@ if (isset($_SESSION["user_id"])) {
     $user = $result->fetch_assoc();
 }
 
-// print_r($user['profile_image'])
+
 ?>
 
 <!doctype html>
@@ -100,14 +100,7 @@ if (isset($_SESSION["user_id"])) {
     <!-- footer end -->
     <script src="num.js"></script>
 
-    <!-- <script>
-        const menuButton = document.getElementById("mobile-menu-button");
-        const mobileMenu = document.getElementById("mobile-menu");
 
-        menuButton.addEventListener("click", () => {
-            mobileMenu.classList.toggle("hidden");
-        });
-    </script> -->
 </body>
 
 </html>

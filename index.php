@@ -33,18 +33,6 @@ if (isset($_SESSION["user_id"])) {
 
     <?php require_once 'includes/nav.inc.php' ?>
 
-    <!-- <div class=" mx-auto max-w-7xl px-4 pt-10 sm:px-6 lg:px-8 ">
-        <img class="shadow-lg inline-block rounded-3xl  ring-stone-200 border-4  border-b-stone-600"
-            src="assets/image-13.jpg" alt="">
-        <div class="absolute ml-[28rem] mt-[-22rem] sm:px-12 md:px-8 lg:px-8">
-            <p class="text-gray-700 font-semibold text-4xl sm:text-left">Order your <br>favourite product here </p>
-            <p class=" text-gray-600 font-normal text-base pt-1">Order your product now and enjoy delicious meals
-                delivered
-                hot and fresh right to your doorstep. <br> Fast, easy, convenient your doorstep.
-                Fast, easy, convenient! </p>
-        </div>
-    </div> -->
-
     <div class="header mx-auto px-4 pt-10 rounded-3xl ring-stone-200 border-4  border-b-stone-600">
         <div class="header-contents">
             <h2 class="text-gray-700 font-semibold ">Order your <br>favourite product here </h2>
@@ -335,8 +323,6 @@ if (isset($_SESSION["user_id"])) {
                 </a>
                 <!-- More products... -->
             </div>
-
-
         </div>
     </div>
 

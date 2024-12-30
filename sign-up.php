@@ -20,9 +20,6 @@
 
     <div class="mx-auto max-w-2xl px-2 sm:px-6 lg:px-8 mt-10">
         <h2 class="mt-10 mb-6 text-xl font-semibold text-gray-900  sm:text-2xl">Sign Up</h2>
-        <!-- <div id="img-view"
-            style="width: 200px; height: 200px; background-size: cover; background-position: center; margin-top: 20px;">
-        </div> -->
         <form action="process-signup.php" method="post" id="signup" enctype="multipart/form-data" novalidate>
             <div class="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
