@@ -38,10 +38,10 @@ Logged-in users can update their personal details such as name, email address, a
      php -S localhost:8000
      ```
 
-!["xddsdd][def]
+![dsdd](/assets/project.jpg)
 
 ```
 
 
-[def]: /assets/project.jpg
+
 ```
