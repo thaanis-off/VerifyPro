@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .addField("#password_confirmation", [
       {
         rule: "required",
+        errorMessage: "Confirm password is required",
       },
       {
         validator: (value, fields) => {
